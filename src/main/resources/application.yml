@@ -2,9 +2,9 @@ spring:
   freemarker:
     cache: false
   datasource:
-    url: jdbc:mysql://localhost/pybbs-springboot?useSSL=false
+    url: jdbc:mysql://localhost/mybbs?useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false 
     username: root
-    password:
+    password: root
   jpa:
     database: mysql
     show-sql: true
@@ -12,17 +12,6 @@ spring:
       ddl-auto: update
   mvc:
     static-path-pattern: /static/**
-#security:
-#  oauth2:
-#    client:
-#      clientId: 58ae19385bdad1ded0fc
-#      clientSecret: 539e8ff931140b39674f283258f62d463b4a3f7b
-#      accessTokenUri: https://github.com/login/oauth/access_token
-#      userAuthorizationUri: https://github.com/login/oauth/authorize
-#      clientAuthenticationScheme: form
-#    resource:
-#      userInfoUri: https://api.github.com/user
-#      preferTokenInfo: false
 banner:
   location: banner.txt
 site:
@@ -33,14 +22,14 @@ site:
   cookieName: _token
   adminCookieName: _admin_token
   cookieDomain: localhost
-  cookieExpireTime: 30 # 单位天
+  cookieExpireTime: 30
   pageSize: 20
   avatarPath: /Users/tomoya/git/github/pybbs/src/main/resources/static/images/avatar/
   uploadPath: /Users/tomoya/git/github/pybbs/src/main/resources/static/images/upload/
   sections:
-    - 分享
-    - 问答
-    - 新闻
-    - 博客
-    - 招聘
+  - 分享
+  - 问答
+  - 新闻
+  - 博客
+  - 招聘
   theme: bootstrap
