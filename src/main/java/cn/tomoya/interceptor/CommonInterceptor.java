@@ -63,7 +63,7 @@ public class CommonInterceptor implements HandlerInterceptor {
         long start = (long) request.getAttribute("_start");
 
         String actionName = request.getRequestURI();
-        String clientIp = IpUtil.getIpAddr(request);
+        String clientIp = "IP:"+ IpUtil.getIpAddr(request);
         StringBuffer logstring = new StringBuffer();
         logstring.append(clientIp).append("|").append(actionName).append("|");
         Map<String, String[]> parmas = request.getParameterMap();

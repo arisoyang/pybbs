@@ -39,10 +39,10 @@ public class FileUtil {
             String requestPath = null;
             if (fileUploadEnum == FileUploadEnum.FILE) {
                 stream = new BufferedOutputStream(new FileOutputStream(new File(siteConfig.getUploadPath() + fileName)));
-                requestPath = siteConfig.getBaseUrl() + "static/images/upload/";
+                requestPath = siteConfig.getBaseUrl() + "nas/upload/";
             } else if (fileUploadEnum == FileUploadEnum.AVATAR) {
                 stream = new BufferedOutputStream(new FileOutputStream(new File(siteConfig.getAvatarPath() + fileName)));
-                requestPath = siteConfig.getBaseUrl() + "static/images/avatar/";
+                requestPath = siteConfig.getBaseUrl() + "nas/avatar/";
             }
             if (stream != null) {
                 stream.write(file.getBytes());

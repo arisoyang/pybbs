@@ -4,6 +4,7 @@ import cn.tomoya.common.config.SiteConfig;
 import cn.tomoya.interceptor.CommonInterceptor;
 import cn.tomoya.module.security.core.MyFilterSecurityInterceptor;
 import cn.tomoya.module.security.core.MyUserDetailService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -114,6 +116,27 @@ public class PybbsApplication extends WebMvcConfigurerAdapter {
         }
     }
 
+     
+    /*
+     * by default 这些资源都是打包在jar包中的，
+     * but 实际应用中，我们还有很多资源是在管理系统中动态维护的，并不可能在程序包中，对于这种随意指定目录的资源
+     * we need to:
+     * 处理静态资源（自定义资源映射） 
+     * /static/** is already used by pybbs jar, so for upload files, need to put in another folder. 
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry)
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/nas/**")
+                .addResourceLocations(
+                        "file:///C:/tmp/cms7/nas/")
+                .setCachePeriod(0);
+        super.addResourceHandlers(registry);
+    }
+    
+    
+    
+    
     public static void main(String[] args) {
         SpringApplication.run(PybbsApplication.class, args);
     }

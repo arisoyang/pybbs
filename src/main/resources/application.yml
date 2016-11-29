@@ -12,6 +12,7 @@ spring:
       ddl-auto: update
   mvc:
     static-path-pattern: /static/**
+    
 banner:
   location: banner.txt
 site:
@@ -24,8 +25,8 @@ site:
   cookieDomain: localhost
   cookieExpireTime: 30
   pageSize: 20
-  avatarPath: /Users/tomoya/git/github/pybbs/src/main/resources/static/images/avatar/
-  uploadPath: /Users/tomoya/git/github/pybbs/src/main/resources/static/images/upload/
+  avatarPath: C:\tmp\cms7\nas\avatar\ 
+  uploadPath: C:\tmp\cms7\nas\upload\
   sections:
   - 分享
   - 问答
